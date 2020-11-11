@@ -1,4 +1,3 @@
-import Drawable from './drawable.js'
 import Moveable from './moveable.js'
 
 export default class Point extends Moveable {

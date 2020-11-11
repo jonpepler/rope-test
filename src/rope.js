@@ -17,16 +17,20 @@ export default p => {
 
   p.draw = () => {
     setBackground(p)
+
     p.strokeWeight(4)
     points.forEach(point => {
       point.update()
       point.constrain(bounds)
     })
+
     const length = Math.hypot(Math.abs(points[0].x - points[1].x), Math.abs(points[0].y - points[1].y))
     p.push()
-    p.stroke(p.map(length, 0, 600, 0, 255))
+    p.stroke(p.map(length, 0, 850, 0, 200))
+    p.strokeWeight(4 - p.map(length, 0, 850, 1, 6))
     p.line(points[0].x, points[0].y, points[1].x, points[1].y)
     p.pop()
+
     points.forEach(point => {
       point.draw(p)
     })
