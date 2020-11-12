@@ -1,8 +1,8 @@
 import Moveable from './moveable.js'
 
 export class Point extends Moveable {
-  constructor (x, y, x0, y0, colour, moveable = true) {
-    super(x, y, x0, y0, moveable)
+  constructor (x, y, x0, y0, colour, moveable = true, visible = true, gravity = true) {
+    super(x, y, x0, y0, moveable, visible)
     this.colour = colour
   }
 

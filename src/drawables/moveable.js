@@ -1,12 +1,13 @@
 import Drawable from './drawable.js'
 
 export default class Moveable extends Drawable {
-  constructor (x, y, x0, y0, moveable = true) {
+  constructor (x, y, x0, y0, moveable = true, visible = true, gravity = true) {
     super(x, y)
     this.x0 = x0
     this.y0 = y0
     this.moveable = moveable
-    this.dampFactor = this.moveable ? 0.999 : 1
+    this.visible = visible
+    this.dampFactor = this.moveable ? 0.995 : 1
     this.bounceFactor = this.moveable ? 0.9 : 1
     // this.gravity = 9.81 / 60 // 9.81 m/s^2 divided by target 60fps
     this.gravity = this.moveable ? 9.81 / 60 : 0 // 9.81 m/s^2 divided by target 60fps
