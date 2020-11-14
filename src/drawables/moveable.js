@@ -25,8 +25,12 @@ export default class Moveable extends Drawable {
   constrain (bounds) {
     const radius = 1 // stroke weight / 2
     const constrainAxis = (c, c0, bound) => {
+      // debugger
       const newPoint = { c, c0 }
       const vc = c - c0
+      if (vc > bound) {
+        return [1, 1]
+      }
       if (c + radius > bound) {
         newPoint.c = bound - radius
         newPoint.c0 = bound - radius + vc * this.bounceFactor
@@ -37,6 +41,7 @@ export default class Moveable extends Drawable {
       }
       return [newPoint.c, newPoint.c0]
     }
+
     const [x, y, x0, y0] = [this.x, this.y, this.x0, this.y0];
     [this.x, this.x0] = constrainAxis(x, x0, bounds[0]);
     [this.y, this.y0] = constrainAxis(y, y0, bounds[1])

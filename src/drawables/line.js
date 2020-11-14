@@ -16,6 +16,9 @@ export default class Line {
   constrain () {
     const offset = this.getLength() - this.targetLength
     const ratio = offset / this.targetLength
+    if (!this.a.moveable && this.a.x === 200) {
+      console.log(this.b.x, offset, ratio)
+    }
     const dx = this.a.x - this.b.x
     const dy = this.a.y - this.b.y
 
@@ -34,6 +37,10 @@ export default class Line {
     if (this.a.moveable ^ this.b.moveable) {
       const mdx = dx * ratio
       const mdy = dy * ratio
+
+      // if (!this.a.moveable && this.a.x === 200) {
+      //   console.log(mdx)
+      // }
       if (this.a.moveable) {
         this.a.x -= mdx
         this.a.y -= mdy

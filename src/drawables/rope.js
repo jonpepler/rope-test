@@ -8,7 +8,7 @@ export class Rope extends Drawable {
     this.anchor = new FixedPoint(sx, sy, 'red')
     this.points = []
     this.links = []
-    this.targetLinkLength = 40
+    this.targetLinkLength = 2
     this.constructRope(length)
   }
 
@@ -20,7 +20,8 @@ export class Rope extends Drawable {
   }
 
   constructRope (length) {
-    this.points = Array.from({ length: length / this.targetLinkLength }).map((v, i) => new Point(this.x + 1, this.y + i, this.x, this.y + i + 1, 'black'))
+    this.points = Array.from({ length: length / this.targetLinkLength })
+      .map((v, i) => new Point(this.x, this.y + i, this.x, this.y + i, 'black'))
 
     this.links.push(new Line(this.anchor, this.points[0], this.targetLinkLength))
     this.links.push(...this.points
